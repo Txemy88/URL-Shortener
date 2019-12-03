@@ -58,12 +58,11 @@
 
 	<div class="container-form-show">
 
-			
-	        
+
 	        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="form">
 	            <div class="urlsshow-form"><h1>URL list</h1></div>
 
-	            <select name="stadistics" id="statistics" onchange="ShowSelected();">
+	            <select name="stadistics" id="statistics">
 
 				   	<option selected value="0"> Order by </option>
 
@@ -75,30 +74,8 @@
 				       <option >From newest to oldest</option> 
 				       <option >From oldest to newest</option> 
 
-				</select>
-				
+				</select><input type="submit" class="boton_1" name="set" id="set" value="Set">
 
-
-				<!-- Get seleccted option from ORDER BY
-				<?php
-				/*if (isset($_REQUEST["postname"]))
-				{
-				  $selected = $_REQUEST["postname"];
-				  echo $selected;
-
-				} 
-				else 
-				{
-				  $selected = null;
-				  echo "Nothing selected";
-				}*/
-
-
-				
-				/*$PHPvariable = $_POST['postname'];
-				echo "PHPvariable = ".$PHPvariable;*/
-				?>
-				-->
 
 				<!------ table to list URLS -->
 				<table class="showhits">
@@ -106,25 +83,12 @@
 						<tr>
 							<th>Views</th>
 							<th>Url</th>
+							<th>ShortURL</th>
 						</tr>
-					</thead>	
-	 					
-	 						<?php
-	 						// Include database configuration file
-							require_once 'dbConfig.php';
-
-					        $stmt = $db->query("SELECT * FROM short_urls ORDER by hits DESC");
-
-								while ($row = $stmt->fetch()) {
-
-							?>
-								    <tr>
-								    	<td><?php echo $row['hits']?></td><td><?php echo $row['long_url']?></td>
-								    </tr>
-							<?php
-
-								}
-							?>
+					</thead>
+					<tbody>
+						<?php require_once 'load_urls.php' ?>
+					</tbody>	
 
 				</table>
 	    	</form>
