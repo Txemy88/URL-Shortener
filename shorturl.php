@@ -10,7 +10,7 @@
 
 		if (isset($_POST['url'])){
 
-				echo "Dentro";
+				
 				$url = $_POST['url'];
 
 				// Long URL
@@ -34,7 +34,7 @@
 				    echo $e->getMessage();
 		}
 		}else{
-				echo "fuera";
+				
 				$error .= '<i>Please enter a valid URL</i>';
 		}
 		//}
